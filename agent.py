@@ -1,3 +1,4 @@
+
 """
 agent.py
 The tool calling loop: gives Claude a goal and 2 tools (search_devpost_hackathons and search_unstop_hackathons) to use to achieve it.
@@ -12,6 +13,8 @@ from clients.unstop_client import search_unstop_hackathons
 
 client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
+# TODO (Step 3): define tool schemas for search_devpost / search_unstop,
+# write the system prompt, and build the call -> tool_use -> tool_result loop.
 TOOLS = [
     {
         "name": "search_devpost",
