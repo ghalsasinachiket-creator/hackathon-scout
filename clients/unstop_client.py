@@ -7,6 +7,7 @@ import os
 import requests
 from dotenv import load_dotenv
 from schema import Opportunity
+import re
 
 load_dotenv()
 
@@ -17,7 +18,12 @@ HEADERS = {
     "X-RapidAPI-Key": RAPIDAPI_KEY,
     "X-RapidAPI-Host": HOST,
 }
+import re
 
+def _title_matches(title: str, query: str) -> bool:
+    words = query.lower().split()
+    title_lower = title.lower()
+    return any(re.search(rf'\b{re.escape(w)}\b', title_lower) for w in words)
 
 def search_unstop_hackathons(query: str, limit: int = 10) -> list[Opportunity]:
     try:
@@ -36,7 +42,8 @@ def search_unstop_hackathons(query: str, limit: int = 10) -> list[Opportunity]:
     all_results = data.get("results", [])
 
     query_lower = query.lower()
-    matches = [item for item in all_results if query_lower in item.get("title", "").lower()]
+    #matches = [item for item in all_results if query_lower in item.get("title", "").lower()]
+    matches = [item for item in all_results if _title_matches(item.get("title", ""), query)]
 
     output = []
     for item in matches[:limit]:
