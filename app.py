@@ -12,7 +12,7 @@ if st.button("Run agent"):
     if not query:
         st.warning("Please enter a search query.")
     else:
-        with st.spinner("Searching Devpost and Unstop..."):
+        with st.spinner("Searching Devpost and Unstop and Devfolio..."):
             results = agent.run(query)
 
         if not results:
