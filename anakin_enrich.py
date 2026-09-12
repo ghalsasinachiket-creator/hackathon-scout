@@ -14,15 +14,12 @@ once a job completes. The code below checks a few likely candidates
 and, if none match, raises an error printing the full response so you
 can see the real structure in one shot rather than guessing again.
 """
-import os
 import re
 import time
 import requests
-from dotenv import load_dotenv
+from config import get_secret
 
-load_dotenv()
-
-ANAKIN_API_KEY = os.environ["ANAKIN_API_KEY"]
+ANAKIN_API_KEY = get_secret("ANAKIN_API_KEY")
 BASE_URL = "https://api.anakin.io/v1/url-scraper"
 
 
@@ -74,6 +71,10 @@ def _extract_team_size(markdown: str) -> str | None:
 
 def enrich_with_detail_page(hackathon: dict) -> dict:
     """Fetch the hackathon's own page and fill in what the list APIs don't give us."""
+    if not ANAKIN_API_KEY:
+        print("enrichment skipped: ANAKIN_API_KEY is not configured")
+        return hackathon
+
     try:
         markdown = _scrape_page(hackathon["url"])
         hackathon["team_size"] = _extract_team_size(markdown)

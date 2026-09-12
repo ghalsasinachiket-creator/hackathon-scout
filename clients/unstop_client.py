@@ -10,16 +10,13 @@ want to spend one of your remaining requests on fresh data (e.g. right
 before your actual submission/demo).
 """
 import json
-import os
 import re
 import requests
 from pathlib import Path
-from dotenv import load_dotenv
+from config import get_secret
 from schema import Opportunity
 
-load_dotenv()
-
-RAPIDAPI_KEY = os.environ.get("RAPIDAPI_KEY")
+RAPIDAPI_KEY = get_secret("RAPIDAPI_KEY")
 HOST = "unstop-api.p.rapidapi.com"
 HEADERS = {
     "Content-Type": "application/json",

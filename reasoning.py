@@ -9,17 +9,11 @@ small regardless of how many sources/items get added - asking it to
 echo every field back was overflowing the output length and
 truncating the JSON once Devfolio pushed the result count up.
 """
-import os
 import json
 from openai import OpenAI
-from dotenv import load_dotenv
+from config import get_secret
 
-load_dotenv()
-
-client = OpenAI(
-    api_key=os.environ["GROQ_API_KEY"],
-    base_url="https://api.groq.com/openai/v1",
-)
+GROQ_API_KEY = get_secret("GROQ_API_KEY")
 
 MODEL = "openai/gpt-oss-20b"
 
@@ -27,6 +21,15 @@ MODEL = "openai/gpt-oss-20b"
 def reason_over_results(goal: str, results: list[dict]) -> list[dict]:
     if not results:
         return results
+
+    if not GROQ_API_KEY:
+        print("reasoning step skipped: GROQ_API_KEY is not configured")
+        return results
+
+    client = OpenAI(
+        api_key=GROQ_API_KEY,
+        base_url="https://api.groq.com/openai/v1",
+    )
 
     # Only send what the model needs to judge relevance, not the full record
     slim = [
