@@ -1,3 +1,62 @@
+"""
+devfolio_client.py
+Uses Devfolio's own internal GraphQL API — reverse-engineered directly
+from their production Next.js JS bundle, not from a network capture.
+Undocumented and could break if Devfolio changes their frontend's query shape.
+"""
+import re
+import requests
+
+GRAPHQL_URL = "https://api.devfolio.co/v1/graphql"
+
+QUERY = """
+fragment HackathonType on hackathons {
+  uuid
+  slug
+  name
+  type
+  starts_at
+  ends_at
+  is_online
+  devfolio_official
+  rating
+  themes {
+    theme {
+      name
+    }
+  }
+  settings {
+    reg_ends_at
+    reg_starts_at
+    site
+    external_apply_url
+  }
+}
+
+query GetAllHackathonTypes {
+  open_hackathons: hackathons(
+    where: { _and: [{ private: { _eq: false } }, { settings: { reg_starts_at: { _lte: now }, reg_ends_at: { _gte: now } } }] }
+    limit: 20
+    order_by: { settings: { reg_ends_at: asc } }
+  ) {
+    ...HackathonType
+  }
+  upcoming_hackathons: hackathons(
+    where: { _and: [{ private: { _eq: false } }, { settings: { reg_starts_at: { _gte: now } } }] }
+    limit: 20
+  ) {
+    ...HackathonType
+  }
+}
+"""
+
+
+def _title_matches(title: str, query: str) -> bool:
+    words = query.lower().split()
+    title_lower = title.lower()
+    return any(re.search(rf'\b{re.escape(w)}\b', title_lower) for w in words)
+
+
 def search_devfolio_hackathons(query: str, limit: int = 10) -> list[dict]:
     try:
         resp = requests.post(
@@ -28,13 +87,11 @@ def search_devfolio_hackathons(query: str, limit: int = 10) -> list[dict]:
             h["_status"] = status_label
             bucketed.append(h)
 
-    # --- new debug lines ---
     print(f"[devfolio_client] fetched {len(bucketed)} hackathons total")
     for h in bucketed:
         print(" -", h.get("name"))
-    # --- end debug lines ---
 
-    matches = [h for h in bucketed if _title_matches(h.get("name", ""), query)]  # <-- this line is "the filter step"
+    matches = [h for h in bucketed if _title_matches(h.get("name", ""), query)]
 
     output = []
     for h in matches[:limit]:
@@ -53,3 +110,8 @@ def search_devfolio_hackathons(query: str, limit: int = 10) -> list[dict]:
             "source_query": query,
         })
     return output
+
+
+if __name__ == "__main__":
+    for r in search_devfolio_hackathons("AI"):
+        print(r["title"], "-", r["url"])
