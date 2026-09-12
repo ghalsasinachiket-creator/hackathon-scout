@@ -24,7 +24,13 @@ def reason_over_results(goal: str, results: list[dict]) -> list[dict]:
 
     if not GROQ_API_KEY:
         print("reasoning step skipped: GROQ_API_KEY is not configured")
-        return results
+        return [
+            {
+                **item,
+                "why": "Reasoning skipped because GROQ_API_KEY is not configured.",
+            }
+            for item in results
+        ]
 
     client = OpenAI(
         api_key=GROQ_API_KEY,
@@ -74,8 +80,23 @@ have exactly these two fields:
                 item["why"] = d.get("why")
                 output.append(item)
 
-        return output or results  # nothing usable parsed -> fall back safely
+        if output:
+            return output
+
+        return [
+            {
+                **item,
+                "why": "Reasoning did not return a usable selection, so this item is shown from the raw search results.",
+            }
+            for item in results
+        ]
 
     except Exception as e:
         print(f"reasoning step failed, falling back to unfiltered results: {e}")
-        return results
+        return [
+            {
+                **item,
+                "why": "Reasoning failed, so this item is shown from the raw search results.",
+            }
+            for item in results
+        ]
