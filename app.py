@@ -19,5 +19,5 @@ if st.button("Run agent"):
             st.info("No matching hackathons found.")
         else:
             st.success(f"Found {len(results)} matching hackathons.")
-            st.dataframe(results, use_container_width=True)
+            st.dataframe(results, width=True)
     
