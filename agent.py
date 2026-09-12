@@ -5,14 +5,16 @@ then runs one reasoning pass over them before returning.
 """
 from clients.devpost_client import get_hackathons
 from clients.unstop_client import search_unstop_hackathons
+from clients.devfolio_client import search_devfolio_hackathons
 from reasoning import reason_over_results
 
 
 def run(goal: str, limit: int = 10) -> list[dict]:
     devpost_results = get_hackathons(query=goal, status="open", limit=limit)
     unstop_results = search_unstop_hackathons(query=goal, limit=limit)
+    devfolio_results = search_devfolio_hackathons(query=goal, limit=limit)
 
-    combined = devpost_results + unstop_results
+    combined = devpost_results + unstop_results+ devfolio_results
 
     # Dedupe in case the same hackathon appears on both platforms
     seen = set()
