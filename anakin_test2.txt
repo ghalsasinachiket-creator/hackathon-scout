@@ -1,10 +1,7 @@
-Traceback (most recent call last):
-  File "<string>", line 1, in <module>
-    from anakin_enrich import _scrape_page; print(_scrape_page('https://ai-builders-hackathon-2026.devpost.com/')[:500])
-                                                  ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/nachiket/projects/opportunity-scout/anakin_enrich.py", line 33, in _scrape_page
-    resp.raise_for_status()
-    ~~~~~~~~~~~~~~~~~~~~~^^
-  File "/home/nachiket/projects/opportunity-scout/venv/lib/python3.13/site-packages/requests/models.py", line 1167, in raise_for_status
-    raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://api.anakin.io/v1/scrape
+# [![AI Builders Hackathon](https://d112y698adiu2z.cloudfront.net/photos/production/challenge_photos/004/783/666/datas/full_width.png)](https://ai-builders-hackathon-2026.devpost.com/)
+
+### About the challenge
+
+The world doesn't need another AI demo.
+
+Every day, thousands of AI projects are launched. Most never move beyond a prototype, a landing page, or a collection of prompts. What the world truly needs are AI products that solve real problems, save time, create value, and earn a place in peop
