@@ -12,7 +12,8 @@ from clients.devpost_client import get_hackathons
 from clients.unstop_client import search_unstop_hackathons
 
 client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
-MODEL = "claude-sonnet-5"
+#MODEL = "claude-sonnet-5"
+MODEL = "claude-3-5-sonnet-20241022"  # Valid model identifier
 
 TOOLS = [
     {
