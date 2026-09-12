@@ -4,7 +4,6 @@ action-tutorials-interfaces==0.20.9
 action-tutorials-py==0.20.9
 actionlib-msgs==4.9.2
 actuator-msgs==0.0.1
-altair==6.2.2
 ament-cmake-test==1.3.14
 ament-copyright==0.12.15
 ament-cppcheck==0.12.15
@@ -17,26 +16,47 @@ ament-package==0.14.2
 ament-pep257==0.12.15
 ament-uncrustify==0.12.15
 ament-xmllint==0.12.15
+anaconda-anon-usage @ file:///home/task_177490767889375/croot/anaconda-anon-usage_1774907925443/work
+anaconda-auth @ file:///home/task_177681132732760/croot/anaconda-cloud-auth-split_1776812130933/work
+anaconda-cli-base @ file:///home/task_177546922169020/croot/anaconda-cli-base_1775469250358/work
+anakin-sdk==0.1.0
 angles==1.15.0
-annotated-types==0.8.0
-anthropic==1.4.0
-anyio==4.15.1
-attrs==26.1.0
+annotated-types @ file:///home/task_176174487847081/conda-bld/annotated-types_1761744928471/work
+anyio @ file:///home/task_177313440431767/croot/anyio_1773134428538/work
+archspec @ file:///home/task_175812491784513/conda-bld/archspec_1758124989039/work
+asttokens @ file:///home/conda/feedstock_root/build_artifacts/asttokens_1783975656336/work
+boltons @ file:///croot/boltons_1751383775419/work
+brotlicffi @ file:///home/task_176496126124857/conda-bld/brotlicffi_1764961326114/work
 builtin-interfaces==1.2.3
-certifi==2026.7.22
-charset-normalizer==3.5.1
-click==8.5.0
+cbor==1.0.0
+cbor2==6.1.2
+certifi @ file:///home/conda/feedstock_root/build_artifacts/certifi_1784717589373/work/certifi
+cffi @ file:///croot/cffi_1736182485317/work
+charset-normalizer @ file:///home/task_176174481524083/conda-bld/charset-normalizer_1761744828711/work
+click==8.4.1
+comm @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_comm_1753453984/work
+commonmark==0.9.2
 composition-interfaces==1.2.3
+conda @ file:///home/conda/feedstock_root/build_artifacts/conda_1777457670951/work/conda-src
+conda-anaconda-telemetry @ file:///croot/conda-anaconda-telemetry_1755883788794/work
+conda-anaconda-tos @ file:///croot/conda-anaconda-tos_1755123313635/work
+conda-content-trust @ file:///home/task_177526675282743/croot/conda-content-trust_1775266795331/work
+conda-libmamba-solver @ file:///home/task_177680598199370/croot/conda-libmamba-solver_1776806057595/work/src
+conda-package-handling @ file:///home/task_176236637997838/conda-bld/conda-package-handling_1762366405159/work
+conda_package_streaming @ file:///home/task_176236152622180/conda-bld/conda-package-streaming_1762361633858/work
 control-msgs==4.9.0
 controller-manager==2.54.0
 controller-manager-msgs==2.54.0
 controller-msg==0.0.0
+coppeliasim_zmqremoteapi_client==2.0.4
+cryptography @ file:///home/task_176009247093364/conda-bld/cryptography-split_1760092601830/work
 cv-bridge==3.2.1
 data-tamer-msgs==0.9.3
+debugpy @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_debugpy_1780390153/work
 demo-nodes-py==0.20.9
 diagnostic-msgs==4.9.2
 diagnostic-updater==4.0.7
-docstring_parser==0.18.0
+distro @ file:///work/perseverance-python-buildout/croot/distro_1728396110052/work
 domain-coordinator==0.10.0
 error-msg==0.0.0
 example-interfaces==0.9.3
@@ -47,25 +67,39 @@ examples-rclpy-minimal-client==0.15.5
 examples-rclpy-minimal-publisher==0.15.5
 examples-rclpy-minimal-service==0.15.5
 examples-rclpy-minimal-subscriber==0.15.5
+executing @ file:///home/conda/feedstock_root/build_artifacts/executing_1756729339227/work
+eyantra-autoeval==0.1.63
+frozendict @ file:///home/task_176175049677026/conda-bld/frozendict_1761750665451/work
 gazebo-msgs==3.9.0
 generate-parameter-library-py==0.7.5
 geographic-msgs==1.0.6
 geometry-msgs==4.9.2
 gps-msgs==3.1.0
-h11==0.16.0
+greenlet==3.5.5
+h11 @ file:///home/task_176193111687894/conda-bld/h11_1761931259172/work
+httpcore @ file:///croot/httpcore_1748526048470/work
 httpcore2==2.12.0
-httptools==0.8.0
+httpx @ file:///home/task_176044729083783/conda-bld/httpx_1760447344657/work
 httpx2==2.12.0
 idna==3.19
 image-geometry==3.2.1
 interactive-markers==2.3.2
-itsdangerous==2.2.0
-Jinja2==3.1.6
+ipykernel @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_ipykernel_1781101665/work
+ipython @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_ipython_1788260388/work
+ipython_pygments_lexers @ file:///home/conda/feedstock_root/build_artifacts/ipython_pygments_lexers_1737123620466/work
+jaraco.classes @ file:///croot/jaraco.classes_1755516327832/work
+jaraco.context @ file:///home/task_176947759528748/croot/jaraco.context_1769477842447/work
+jaraco.functools @ file:///home/task_176838874890348/croot/jaraco.functools_1768389366336/work
+jedi @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_jedi_1782251948/work
+jeepney @ file:///tmp/build/80754af9/jeepney_1627537048313/work
 jiter==0.16.0
 joint-state-publisher==2.4.0
 joint-state-publisher-gui==2.4.0
-jsonschema==4.26.0
-jsonschema-specifications==2025.9.1
+jsonpatch @ file:///work/perseverance-python-buildout/croot/jsonpatch_1728399595941/work
+jsonpointer @ file:///home/task_177443285493046/croot/jsonpointer_1774432880631/work
+jupyter_client @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_jupyter_client_1787929615/work
+jupyter_core @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_jupyter_core_1760643864/work
+keyring @ file:///home/task_176363713576885/conda-bld/keyring_1763637184857/work
 laser-geometry==2.4.1
 launch==1.0.14
 launch-param-builder==0.1.1
@@ -74,36 +108,54 @@ launch-testing==1.0.14
 launch-testing-ros==0.19.14
 launch-xml==1.0.14
 launch-yaml==1.0.14
+libmambapy @ file:///home/task_177669999816871/croot/mamba-split_1776700366233/work/libmambapy
 lifecycle-msgs==1.2.3
 logging-demo==0.20.9
 map-msgs==2.1.0
-MarkupSafe==3.0.3
+markdown-it-py @ file:///home/task_176700162971740/croot/markdown-it-py_1767001650253/work
+matplotlib-inline @ file:///home/conda/feedstock_root/build_artifacts/matplotlib-inline_1778264321245/work
 mav-msgs==3.3.3
 mav-planning-msgs==3.3.3
+mdurl @ file:///home/task_175855216352428/conda-bld/mdurl_1758552176751/work
+menuinst @ file:///home/task_176538230483207/conda-bld/menuinst_1765382366331/work
 message-filters==4.3.19
+more-itertools @ file:///home/task_177581903763312/croot/more-itertools_1775819395840/work
 moveit-configs-utils==2.5.9
 moveit-msgs==2.2.1
-narwhals==2.26.0
+msgpack @ file:///croot/msgpack-python_1750958623279/work
 nav-msgs==4.9.2
-numpy==2.5.3
+nest-asyncio2 @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_nest-asyncio2_1770973502/work
 object-recognition-msgs==2.0.0
 octomap-msgs==2.0.1
+openai==3.13.0
 osrf-pycommon==2.1.6
-packaging==26.3
-pandas==3.0.5
+packaging==26.0
+parso @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_parso_1777722955/work
 pcl-msgs==1.0.0
 pendulum-msgs==0.20.9
-pillow==12.3.0
+pexpect @ file:///home/conda/feedstock_root/build_artifacts/pexpect_1733301927746/work
+pkce @ file:///work/perseverance-python-buildout/croot/pkce_1728388093137/work
+platformdirs @ file:///home/task_177365214898855/croot/platformdirs_1773652963129/work
+playwright==1.62.0
 plotjuggler-msgs==0.2.3
-protobuf==7.36.1
-pyarrow==25.0.1
-pydantic==2.13.5
-pydantic_core==2.46.5
-pydeck==0.9.3
-python-dateutil==2.9.0.post0
-python-dotenv==1.2.3
-python-multipart==0.0.32
+pluggy @ file:///home/task_177697287633370/croot/pluggy_1776972917169/work
+prompt_toolkit @ file:///home/conda/feedstock_root/build_artifacts/prompt-toolkit_1785160527032/work
+psutil @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_psutil_1788189989/work
+ptyprocess @ file:///home/conda/feedstock_root/build_artifacts/ptyprocess_1733302279685/work/dist/ptyprocess-0.7.0-py2.py3-none-any.whl#sha256=92c32ff62b5fd8cf325bec5ab90d7be3d2a8ca8c8a3813ff487a8d2002630d1f
+pure_eval @ file:///home/conda/feedstock_root/build_artifacts/pure_eval_1733569405015/work
+pycosat @ file:///croot/pycosat_1736868416091/work
+pycparser @ file:///home/task_177495969264897/croot/pycparser_1774959744365/work
+pydantic @ file:///home/task_177676175720061/croot/pydantic_1776761799833/work
+pydantic-settings @ file:///home/task_176416496069032/conda-bld/pydantic-settings_1764165165402/work
+pydantic_core @ file:///home/task_177669498737047/croot/pydantic-core_1776695032910/work
+pyee==13.0.1
+Pygments @ file:///home/task_177512698095713/croot/pygments_1775127017410/work
+PyJWT @ file:///home/task_177377321285166/croot/pyjwt_1773773790894/work
+PySocks @ file:///home/task_176175235884818/conda-bld/pysocks_1761753009495/work
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_python-dateutil_1751104122/work
+python-dotenv @ file:///home/task_176855885656798/croot/python-dotenv_1768559688221/work
 python-qt-binding==1.1.3
+pyzmq==27.1.0
 qt-dotgraph==2.2.5
 qt-gui==2.2.5
 qt-gui-cpp==2.2.5
@@ -112,9 +164,10 @@ quality-of-service-demo-py==0.20.9
 rcl-interfaces==1.2.3
 rclpy==3.3.21
 rcutils==5.1.9
-referencing==0.37.0
-requests==2.34.2
+readchar @ file:///home/task_176061336965958/conda-bld/readchar_1760613437376/work
+requests @ file:///home/task_177506603358355/croot/requests_1775066075144/work
 resource-retriever==3.1.3
+rich==12.6.0
 rmw-dds-common==1.6.0
 robot-localization==3.5.4
 ros-gz-interfaces==0.244.25
@@ -154,7 +207,6 @@ rosidl-typesupport-fastrtps-c==2.2.4
 rosidl-typesupport-fastrtps-cpp==2.2.4
 rosidl-typesupport-introspection-c==3.1.9
 rosidl-typesupport-introspection-cpp==3.1.9
-rpds-py==2026.6.3
 rpyutils==0.2.2
 rqt-action==2.0.1
 rqt-bag==1.1.6
@@ -173,20 +225,25 @@ rqt-service-caller==1.0.5
 rqt-shell==1.0.2
 rqt-srv==1.0.3
 rqt-topic==1.5.1
+ruamel.yaml @ file:///home/task_176253595903435/conda-bld/ruamel.yaml_1762535972567/work
+ruamel.yaml.clib @ file:///home/task_176253026438192/conda-bld/ruamel.yaml.clib_1762530278005/work
 scripts==3.9.0
+SecretStorage @ file:///home/task_177512694364126/croot/secretstorage_1775127010526/work
+semver @ file:///home/task_176190313959014/conda-bld/semver_1761903196627/work
 sensor-msgs==4.9.2
 sensor-msgs-py==4.9.2
+setuptools==82.0.1
 shape-msgs==4.9.2
-six==1.17.0
+shellingham @ file:///home/task_176191203629823/conda-bld/shellingham_1761912204430/work
+six @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_six_1753199211/work
 sniffio==1.3.1
 srdfdom==2.0.7
 sros2==0.10.9
-starlette==1.6.0
+stack_data @ file:///home/conda/feedstock_root/build_artifacts/stack_data_1733569443808/work
 statistics-msgs==1.2.3
 std-msgs==4.9.2
 std-srvs==4.9.2
 stereo-msgs==4.9.2
-streamlit==1.63.0
 swift-msgs==0.0.0
 task1a==0.0.0
 teleop-twist-keyboard==2.4.1
@@ -199,24 +256,30 @@ tf2-ros-py==0.25.22
 tf2-sensor-msgs==0.25.22
 tf2-tools==0.25.22
 theora-image-transport==2.5.5
-toml==0.10.2
+tomli @ file:///home/task_176829646049141/croot/tomli_1768296482268/work
+tomlkit @ file:///home/task_176289666312502/conda-bld/tomlkit_1762896676945/work
 topic-monitor==0.20.9
 topic-tools==1.1.2
 topic-tools-interfaces==1.1.2
+tornado @ file:///home/conda/feedstock_root/build_artifacts/tornado_1788524738752/work
+tqdm @ file:///home/task_177139827237424/croot/tqdm_1771398701478/work
+traitlets @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_traitlets_1785761789/work
 trajectory-msgs==4.9.2
-truststore==0.10.4
+truststore @ file:///home/task_176252074050774/conda-bld/truststore_1762520903993/work
 turtlesim==1.4.3
-typing-inspection==0.4.4
-typing_extensions==4.16.0
+typer==0.20.0
+typer-slim==0.20.0
+typing-inspection @ file:///home/task_176061348700415/conda-bld/typing-inspection_1760614166875/work
+typing_extensions @ file:///croot/typing_extensions_1756280817316/work
 unique-identifier-msgs==2.2.1
 ur-dashboard-msgs==2.14.0
 ur-moveit-config==2.14.0
 ur-msgs==2.6.0
 urdfdom-py==1.2.1
-urllib3==2.7.0
-uvicorn==0.52.4
+urllib3 @ file:///home/task_176781010304586/croot/urllib3_1767810267320/work
 vision-msgs==4.1.1
 visualization-msgs==4.9.2
-watchdog==6.0.0
-websockets==16.1.1
+wcwidth @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_wcwidth_1788174996/work
+wheel==0.46.3
 xacro==2.1.1
+zstandard @ file:///home/task_177696025748869/croot/zstandard_1776960539790/work
