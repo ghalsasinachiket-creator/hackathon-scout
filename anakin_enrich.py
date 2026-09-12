@@ -15,6 +15,9 @@ use that one instead of this best guess.
 import os
 import re
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 ANAKIN_API_KEY = os.environ["ANAKIN_API_KEY"]
 
