@@ -28,6 +28,8 @@ def get_hackathons(query: str, status: str = "open" , challenge_type: str = "all
     data = resp.json()
 
     hackathons = data.get("hackathons", [])[:limit]
+    import json
+    print(json.dumps(hackathons[0], indent=2))
     return[
         {
             "title": hackathon.get("title"),
