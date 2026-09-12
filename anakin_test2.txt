@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    from anakin_enrich import _scrape_page; print(_scrape_page('https://ai-builders-hackathon-2026.devpost.com/')[:500])
+                                                  ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nachiket/projects/opportunity-scout/anakin_enrich.py", line 33, in _scrape_page
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/nachiket/projects/opportunity-scout/venv/lib/python3.13/site-packages/requests/models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://api.anakin.io/v1/scrape

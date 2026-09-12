@@ -1,0 +1,9 @@
+https://api.anakin.io/v1/url-scraper -> 202 {"jobId":"79099309-9040-4abf-a7de-6d2ca2ee9870","status":"pending"}
+https://api.anakin.ai/v1/scrape -> 200 <script>
+  window.location.href = 'https://app.anakin.ai/';
+</script>
+
+https://api.anakin.ai/v1/scrape -> 200 <script>
+  window.location.href = 'https://app.anakin.ai/';
+</script>
+
