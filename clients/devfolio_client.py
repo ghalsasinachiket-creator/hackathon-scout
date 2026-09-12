@@ -51,10 +51,13 @@ query GetAllHackathonTypes {
 """
 
 
-def _title_matches(title: str, query: str) -> bool:
+def _hackathon_matches(hackathon: dict, query: str) -> bool:
     words = query.lower().split()
-    title_lower = title.lower()
-    return any(re.search(rf'\b{re.escape(w)}\b', title_lower) for w in words)
+    name_lower = hackathon.get("name", "").lower()
+    theme_names = [t.get("theme", {}).get("name", "") for t in hackathon.get("themes", []) if isinstance(t, dict)]
+    theme_text = " ".join(theme_names).lower()
+    combined = f"{name_lower} {theme_text}"
+    return any(re.search(rf'\b{re.escape(w)}\b', combined) for w in words)
 
 
 def search_devfolio_hackathons(query: str, limit: int = 10) -> list[dict]:
@@ -91,7 +94,8 @@ def search_devfolio_hackathons(query: str, limit: int = 10) -> list[dict]:
     for h in bucketed:
         print(" -", h.get("name"))
 
-    matches = [h for h in bucketed if _title_matches(h.get("name", ""), query)]
+    #matches = [h for h in bucketed if _title_matches(h.get("name", ""), query)]
+    matches = [h for h in bucketed if _hackathon_matches(h, query)]
 
     output = []
     for h in matches[:limit]:
