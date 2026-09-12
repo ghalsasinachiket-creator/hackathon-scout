@@ -1,38 +1,42 @@
 """
 unstop_client.py
-Uses the "Unstop API" wrapper on RapidAPI instead of Playwright/Anakin
-Browser Sessions — it's a real documented REST API, so no headless
-browser is needed for Unstop after all.
+Uses the "Unstop API" wrapper on RapidAPI — a real documented REST API,
+no headless browser needed for Unstop.
 """
 import os
 import requests
+from dotenv import load_dotenv
 from schema import Opportunity
+
+load_dotenv()
 
 RAPIDAPI_KEY = os.environ.get("RAPIDAPI_KEY")
 HOST = "unstop-api.p.rapidapi.com"
 HEADERS = {
     "Content-Type": "application/json",
-    "x-rapidapi-host": HOST,
-    "x-rapidapi-key": RAPIDAPI_KEY,
+    "X-RapidAPI-Key": RAPIDAPI_KEY,
+    "X-RapidAPI-Host": HOST,
 }
 
-def search_unstop_hackathons(query: str, limit: int = 10) -> list[Opportunity]:
-    # TODO: your screenshot only shows "Fetch Workshops" (/workshops).
-    # Check the left sidebar under "Unstop API" for a separate
-    # "Fetch Hackathons" / "Fetch Competitions" endpoint before assuming
-    # this is the right path — workshops and hackathons may be different
-    # endpoints in the same collection.
-    resp = requests.get(
-        f"https://{HOST}/hackathons",  # TODO: confirm against the collection
-        headers=HEADERS,
-        params={"page": 1, "search": query},
-        timeout=10,
-    )
-    resp.raise_for_status()
-    data = resp.json()
 
-    # TODO: check the "Example Responses" tab in RapidAPI to confirm
-    # real key names before trusting this — same rule as devpost_client.py.
+def search_unstop_hackathons(query: str, limit: int = 10) -> list[Opportunity]:
+    # TODO: confirm "search" is a real param — RapidAPI's Params tab showed
+    # only 1 param (likely just "page"). If unsupported, filter `results`
+    # by query client-side instead.
+    try:
+        resp = requests.get(
+            f"https://{HOST}/hackathons",
+            headers=HEADERS,
+            params={"page": 1, "search": query},
+            timeout=10,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+    except requests.exceptions.RequestException as e:
+        print(f"[unstop_client] request failed: {e}")
+        return []
+
+    # TODO: check "Example Responses" in RapidAPI to confirm real key names.
     results = data.get("data", data.get("results", []))[:limit]
     return [
         {
