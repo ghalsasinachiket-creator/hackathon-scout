@@ -1,10 +1,11 @@
 """
 agent.py
-Calls both platform clients directly and merges the results — no LLM
-needed for a straightforward keyword search across fixed sources.
+Calls each platform client directly, merges and dedupes the results,
+then runs one reasoning pass over them before returning.
 """
 from clients.devpost_client import get_hackathons
 from clients.unstop_client import search_unstop_hackathons
+from reasoning import reason_over_results
 
 
 def run(goal: str, limit: int = 10) -> list[dict]:
@@ -22,7 +23,7 @@ def run(goal: str, limit: int = 10) -> list[dict]:
             seen.add(key)
             deduped.append(item)
 
-    return deduped
+    return reason_over_results(goal, deduped)
 
 
 if __name__ == "__main__":
