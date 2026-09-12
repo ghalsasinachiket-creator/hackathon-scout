@@ -4,10 +4,11 @@ Uses the "Unstop API" wrapper on RapidAPI — a real documented REST API,
 no headless browser needed for Unstop.
 """
 import os
+import re
+import time
 import requests
 from dotenv import load_dotenv
 from schema import Opportunity
-import re
 
 load_dotenv()
 
@@ -18,31 +19,47 @@ HEADERS = {
     "X-RapidAPI-Key": RAPIDAPI_KEY,
     "X-RapidAPI-Host": HOST,
 }
-import re
+
 
 def _title_matches(title: str, query: str) -> bool:
     words = query.lower().split()
     title_lower = title.lower()
     return any(re.search(rf'\b{re.escape(w)}\b', title_lower) for w in words)
 
+
 def search_unstop_hackathons(query: str, limit: int = 10) -> list[Opportunity]:
+    url = f"https://{HOST}/hackathons"
+    params = {"page": 1}  # "search" confirmed to have no effect — filtering below instead
+
     try:
+        # 1. Initial request
         resp = requests.get(
-            f"https://{HOST}/hackathons",
+            url,
             headers=HEADERS,
-            params={"page": 1},  # "search" confirmed to have no effect — filtering below instead
+            params=params,
             timeout=10,
         )
+
+        # 2. Check for 429 Rate Limit before raising an error exception
+        if resp.status_code == 429:
+            print("[unstop_client] Rate limit exceeded (429). Waiting for 60 seconds before retrying...")
+            time.sleep(60)
+            resp = requests.get(
+                url,
+                headers=HEADERS,
+                params=params,
+                timeout=10,
+            )
+
+        # 3. Raise exception for non-200 HTTP statuses
         resp.raise_for_status()
         data = resp.json()
+
     except requests.exceptions.RequestException as e:
         print(f"[unstop_client] request failed: {e}")
         return []
 
     all_results = data.get("results", [])
-
-    query_lower = query.lower()
-    #matches = [item for item in all_results if query_lower in item.get("title", "").lower()]
     matches = [item for item in all_results if _title_matches(item.get("title", ""), query)]
 
     output = []
