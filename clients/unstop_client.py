@@ -32,6 +32,8 @@ def search_unstop_hackathons(query: str, limit: int = 10) -> list[Opportunity]:
         )
         resp.raise_for_status()
         data = resp.json()
+        import json
+        print(json.dumps(data,indent =2))
     except requests.exceptions.RequestException as e:
         print(f"[unstop_client] request failed: {e}")
         return []
