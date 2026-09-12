@@ -20,40 +20,43 @@ HEADERS = {
 
 
 def search_unstop_hackathons(query: str, limit: int = 10) -> list[Opportunity]:
-    # TODO: confirm "search" is a real param — RapidAPI's Params tab showed
-    # only 1 param (likely just "page"). If unsupported, filter `results`
-    # by query client-side instead.
     try:
         resp = requests.get(
             f"https://{HOST}/hackathons",
             headers=HEADERS,
-            params={"page": 1, "search": query},
+            params={"page": 1},  # "search" confirmed to have no effect — filtering below instead
             timeout=10,
         )
         resp.raise_for_status()
         data = resp.json()
-        import json
-        print(json.dumps(data,indent =2))
     except requests.exceptions.RequestException as e:
         print(f"[unstop_client] request failed: {e}")
         return []
 
-    # TODO: check "Example Responses" in RapidAPI to confirm real key names.
-    results = data.get("data", data.get("results", []))[:limit]
-    return [
-        {
+    all_results = data.get("results", [])
+
+    query_lower = query.lower()
+    matches = [item for item in all_results if query_lower in item.get("title", "").lower()]
+
+    output = []
+    for item in matches[:limit]:
+        raw_url = item.get("url") or item.get("public_url")
+        if raw_url and not raw_url.startswith("http"):
+            raw_url = f"https://unstop.com/{raw_url}"
+
+        output.append({
             "title": item.get("title"),
             "platform": "unstop",
-            "url": item.get("public_url") or item.get("url"),
-            "prize_money": item.get("prize_money"),
-            "deadline": item.get("deadline") or item.get("end_date"),
-            "team_size": item.get("team_size"),
-            "registration_status": item.get("status"),
-            "tags": item.get("tags", []),
+            "url": raw_url,
+            "prize_money": item.get("overall_prizes"),
+            "deadline": item.get("end_date"),
+            "location": item.get("region"),
+            "team_size": None,  # needs enrich_with_detail_page, same as Devpost
+            "registration_status": "open" if item.get("regn_open") else "closed",
+            "tags": [],  # not available from this endpoint
             "source_query": query,
-        }
-        for item in results
-    ]
+        })
+    return output
 
 
 if __name__ == "__main__":
