@@ -37,19 +37,27 @@ query = st.text_input("Search for hackathons by keyword (e.g. 'AI', 'robotics', 
 if st.button("Run agent"):
     if not query:
         st.warning("Please enter a search query.")
+        st.session_state.pop("results", None)
     else:
         with st.spinner("Searching Devpost and Unstop and Devfolio..."):
-            results = agent.run(query)
+            st.session_state["results"] = agent.run(query)
 
-        if not results:
-            st.info("No matching hackathons found.")
-        else:
-            st.success(f"Found {len(results)} matching hackathons.")
+# Deliberately outside the button's if-block: clicking the download button
+# below also triggers a rerun, and on that rerun "Run agent" wasn't clicked -
+# if this block lived inside that if-statement, it would vanish the instant
+# you clicked download, and the file would never actually get served.
+if "results" in st.session_state:
+    results = st.session_state["results"]
 
-            ics_content = generate_ics(results)
-            st.download_button(
-                "Add deadlines to calendar (.ics)", ics_content,
-                "hackathon_deadlines.ics", "text/calendar"
-            )
+    if not results:
+        st.info("No matching hackathons found.")
+    else:
+        st.success(f"Found {len(results)} matching hackathons.")
 
-            st.dataframe(order_result_columns(results), width=True)
+        ics_content = generate_ics(results)
+        st.download_button(
+            "Add deadlines to calendar (.ics)", ics_content,
+            "hackathon_deadlines.ics", "text/calendar"
+        )
+
+        st.dataframe(order_result_columns(results), use_container_width=True)
