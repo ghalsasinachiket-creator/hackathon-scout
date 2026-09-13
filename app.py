@@ -52,4 +52,4 @@ if st.button("Run agent"):
                 "hackathon_deadlines.ics", "text/calendar"
             )
 
-            st.dataframe(order_result_columns(results), use_container_width=True)
+            st.dataframe(order_result_columns(results), width=True)
