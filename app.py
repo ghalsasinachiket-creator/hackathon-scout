@@ -1,13 +1,10 @@
 """
 app.py
-Streamlit dashboard -> the entry pint for the demo.Fill this in during step 7 once agent.py can run end-to-end.
+Streamlit dashboard - the entry point for the demo.
 """
 import streamlit as st
 import agent
 from calendar_export import generate_ics
-
-st.title("Opportunity Scout")
-query = st.text_input("Search for hackathons by keyword (e.g. 'AI', 'robotics', 'blockchain'):")
 
 
 def order_result_columns(results: list[dict]) -> list[dict]:
@@ -33,13 +30,11 @@ def order_result_columns(results: list[dict]) -> list[dict]:
         ordered.append(columns)
     return ordered
 
+
 st.title("Opportunity Scout")
 query = st.text_input("Search for hackathons by keyword (e.g. 'AI', 'robotics', 'blockchain'):")
 
-
-
 if st.button("Run agent"):
-    #st.write("TODO: call agent.run(query) and display the results table")
     if not query:
         st.warning("Please enter a search query.")
     else:
@@ -50,9 +45,11 @@ if st.button("Run agent"):
             st.info("No matching hackathons found.")
         else:
             st.success(f"Found {len(results)} matching hackathons.")
+
             ics_content = generate_ics(results)
             st.download_button(
-                "Add deadlines to calendar (.ics)", ics_content,                    # <-- add this
-                "hackathon_deadlines.ics", "text/calendar"   
+                "Add deadlines to calendar (.ics)", ics_content,
+                "hackathon_deadlines.ics", "text/calendar"
             )
+
             st.dataframe(order_result_columns(results), use_container_width=True)
