@@ -31,4 +31,4 @@ def order_result_columns(results: list[dict]) -> list[dict]:
     return ordered
 
 
-st.set_page_config(page_title="Hackathon Scout", page_icon="🔭")   #
+#st.set_page_config(page_title="Hackathon Scout", page_icon="🔭")   #
