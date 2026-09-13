@@ -1,6 +1,8 @@
-# Opportunity Scout
+# Hackathon Scout
 
-Opportunity Scout is a Streamlit app that searches multiple hackathon sources, merges and deduplicates the results, uses an LLM to explain why each result matches the user's goal, enriches top results with detail-page information, and exports deadlines as a calendar file.
+Hackathon Scout is a Streamlit app that searches multiple hackathon sources, merges and deduplicates the results, uses an LLM to explain why each result matches the user's goal, enriches top results with detail-page information, and exports deadlines as a calendar file.
+
+**Live app:** [https://hackathon-scout-kbnyxom3yhuggntbyzr7ys.streamlit.app/](https://hackathon-scout-kbnyxom3yhuggntbyzr7ys.streamlit.app/)
 
 ## Features
 

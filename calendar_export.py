@@ -53,7 +53,7 @@ def generate_ics(results:list[dict]) -> str:
         )
 
     return(
-         "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Opportunity Scout//EN\n"
+         "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Hackathon Scout//EN\n"
         + "\n".join(events)
         + "\nEND:VCALENDAR"
     )
