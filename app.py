@@ -4,7 +4,7 @@ Streamlit dashboard -> the entry pint for the demo.Fill this in during step 7 on
 """
 import streamlit as st
 import agent
-from calendar import generate_ics
+from calendar_export import generate_ics
 
 st.title("Opportunity Scout")
 query = st.text_input("Search for hackathons by keyword (e.g. 'AI', 'robotics', 'blockchain'):")
