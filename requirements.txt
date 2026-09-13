@@ -2,5 +2,4 @@ openai==3.13.0
 python-dotenv==1.2.3
 Requests==2.34.2
 streamlit==1.63.0
-python-dateutil
-python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_python-dateutil_1751104122/work
+python-dateutil==2.9.0
